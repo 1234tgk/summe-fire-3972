@@ -1,0 +1,26 @@
+/*
+ * top, right, left, bottom
+ */
+
+#root {
+	-redOrange: #9f2b00;
+	-orange: #d37506;
+	-pewter: #d3d3cb;
+	-taupe: #ada7a7;
+}
+
+#main {
+	-fx-background-color: -pewter;
+}
+
+#top {
+	-fx-pref-height: 50px;
+}
+
+#form {
+	-fx-background-color: white;
+}
+
+#bottom {
+	-fx-pref-height: 50px;
+}

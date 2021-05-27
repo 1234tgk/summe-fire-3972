@@ -1,0 +1,6 @@
+.nav-button {
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: solid;
+	-fx-border-color: blue;
+	-fx-min-height: 40;
+}

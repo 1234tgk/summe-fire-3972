@@ -1,0 +1,5 @@
+#mysql DB template
+MYSQL_DB_DRIVER_CLASS=com.mysql.cj.jdbc.Driver
+MYSQL_DB_URL=<jdbc connection string>
+MYSQL_DB_USERNAME=<username>
+MYSQL_DB_PASSWORD=<password>

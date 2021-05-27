@@ -1,0 +1,27 @@
+#nav-bar {
+	-fx-background-color: #d37506;
+}
+
+.nav-button {
+	/* size */
+	-fx-pref-height: 60px;
+	
+	/* bg */
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-width: 0 0 2 0;
+	-fx-border-style: solid;
+	-fx-border-color: #d3d3cb;
+	
+	/* text */
+	-fx-text-fill: white;
+	-fx-font-family: sans-serif;
+	-fx-font-weight: bold;
+	-fx-font-size:14px;
+	}
+
+/*
+.nav-button:hover {
+	-fx-background-color: white;
+	-fx-text-fill: blue;
+}
+*/
