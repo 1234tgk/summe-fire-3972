@@ -20,39 +20,23 @@ public class NavController {
 	private Button btnMain, btnView, btnAdd, btnDelete, btnClose;
 	
 	public void gotoMain() throws Exception {
-		Stage stage = (Stage) btnMain.getScene().getWindow();
 		Parent root = FXMLLoader.load((new MainApp()).getClass().getResource("FXML/main.fxml"));;
-    	
-    	Scene scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+    	btnMain.getScene().setRoot(root);
 	}
 	
 	public void gotoView() throws Exception {
-		Stage stage = (Stage) btnView.getScene().getWindow();
-		Parent root = FXMLLoader.load((new MainApp()).getClass().getResource("FXML/view.fxml"));;
-    	
-    	Scene scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+		Parent root = FXMLLoader.load((new MainApp()).getClass().getResource("FXML/view.fxml"));
+		btnView.getScene().setRoot(root);
 	}
 	
 	public void gotoAdd() throws Exception {
-		Stage stage = (Stage) btnAdd.getScene().getWindow();
 		Parent root = FXMLLoader.load((new MainApp()).getClass().getResource("FXML/add.fxml"));
-		
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		btnAdd.getScene().setRoot(root);
 	}
 	
 	public void gotoDelete() throws Exception {
-		Stage stage = (Stage) btnDelete.getScene().getWindow();
 		Parent root = FXMLLoader.load((new MainApp()).getClass().getResource("FXML/delete.fxml"));
-		
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		btnAdd.getScene().setRoot(root);
 	}
 	
 	public void close() {
