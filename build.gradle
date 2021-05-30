@@ -11,6 +11,7 @@ plugins {
     id 'java-library'
     id 'application'
   	id 'org.openjfx.javafxplugin' version '0.0.9'
+  	id 'edu.sc.seis.launch4j' version '2.5.0'
 }
 
 repositories {
@@ -20,11 +21,15 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'SummerFire3972.MainApp'
+mainClassName = 'SummerFire3972.Launcher'
 
 javafx {
     version = "16"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+launch4j {
+  mainClassName = 'SummerFire3972.Launcher'
 }
 
 run {
