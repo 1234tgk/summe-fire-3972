@@ -62,7 +62,7 @@ public class DeleteController {
 		
 		btnColumn.setCellFactory(cellFactory);
 		
-		ObservableList<Expense> data = manager.queryAllDetailedThisMonth();
+		ObservableList<Expense> data = manager.queryAllDetailed();
 		
 		table.setItems(data);
 		table.getColumns().addAll(dateColumn, amountColumn, typeColumn, idColumn, btnColumn);		

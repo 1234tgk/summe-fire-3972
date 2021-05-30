@@ -188,6 +188,34 @@ public class DBManager {
 		return ret;
 	}
 	
+	public double[] queryByMonthThisYear() {
+		double[] ret = new double[12];
+		
+		String preparedQuery = """
+				select month(Date) as Month, sum(Amount) as Sum
+				from Expense
+				where year(Date) = ?
+				group by month(Date);
+				""";
+		
+		try (
+				Connection conn = ds.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(preparedQuery);
+			) {
+			
+			stmt.setInt(1, LocalDate.now().getYear());
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				ret[rs.getInt("Month") - 1] = rs.getDouble("Sum");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
 	public String insertValue(LocalDate date, String type, double amount) {
 		
 		Type t;

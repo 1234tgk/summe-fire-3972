@@ -7,7 +7,7 @@
 
 <VBox id="nav-bar" prefHeight="400.0" prefWidth="155.0" stylesheets="@../CSS/nav.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SummerFire3972.Controllers.NavController">
    <children>
-      <Button fx:id="btnMain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="nav-button" text="Main">
+      <Button fx:id="btnMain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#gotoMain" styleClass="nav-button" text="Main">
          <VBox.margin>
             <Insets />
          </VBox.margin>

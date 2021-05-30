@@ -1,0 +1,32 @@
+/*
+ * top, right, left, bottom
+ */
+
+#root {
+	-redOrange: #9f2b00;
+	-orange: #d37506;
+	-pewter: #d3d3cb;
+	-taupe: #ada7a7;
+}
+
+#main {
+	-fx-background-color: -redOrange;
+}
+
+#top {
+	-fx-pref-height: 50px;
+}
+
+#grid {
+	-fx-background-color: -pewter;
+}
+
+#title {
+	-fx-fill: linear-gradient(to bottom, -redOrange, -orange);
+}
+
+.default-color0.chart-series-line { -fx-stroke: -orange; }
+
+#bottom {
+	-fx-pref-height: 50px;
+}
