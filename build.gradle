@@ -5,14 +5,23 @@
  * For more details take a look at the Java Libraries chapter in the Gradle
  * User Manual available at https://docs.gradle.org/6.3/userguide/java_library_plugin.html
  */
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.github.fvarrui:javapackager:1.5.1'
+    }
+}
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'application'
-  	id 'org.openjfx.javafxplugin' version '0.0.9'
-  	id 'edu.sc.seis.launch4j' version '2.5.0'
+      id 'org.openjfx.javafxplugin' version '0.0.9'
 }
+
+apply plugin: 'io.github.fvarrui.javapackager.plugin'
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -21,15 +30,11 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = 'SummerFire3972.Launcher'
+mainClassName = 'SummerFire3972.MainApp'
 
 javafx {
     version = "16"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
-}
-
-launch4j {
-  mainClassName = 'SummerFire3972.Launcher'
 }
 
 run {
@@ -54,4 +59,13 @@ dependencies {
     
     // dbcp
     implementation 'org.apache.commons:commons-dbcp2:2.8.0'
+}
+
+task createExecutable(type: io.github.fvarrui.javapackager.gradle.PackageTask, dependsOn: build) {
+    // mandatory
+    mainClass = 'SummerFire3972.Launcher'
+    // optional
+    bundleJre = true
+    generateInstaller = false
+    administratorRequired = false
 }

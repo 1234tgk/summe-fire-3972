@@ -16,15 +16,6 @@ import javax.sql.DataSource;
 
 public class DBManager {
 	private DataSource ds;
-	
-//	enum Type {
-//		FOOD("Food"), ENTERTAINMENT("Entertainment"), UTILITY("Other"), OTHER("Other");
-//		
-//		private String value;
-//		private Type (String value) {
-//			this.value = value;
-//		}
-//	}
 
 	public DBManager() {
 		ds = DBCPDataSourceFactory.getDataSource();
@@ -36,12 +27,7 @@ public class DBManager {
 		ObservableList<SingleExpense> ret = FXCollections.observableArrayList();
 		
 		// define a query that will be executed right after
-		String query = """
-				select Date, Amount, Type
-				from Expense
-				group by Date, Amount, Type
-				order by Date desc;
-				""";
+		String query = "select Date, Amount, Type from Expense group by Date, Amount, Type order by Date desc;";
 
 		// connect to the database, execute the query, and store all the query detail to the observable list
 		try (
@@ -65,12 +51,7 @@ public class DBManager {
 	public ObservableList<Expense> queryAllDetailed() {
 		
 		ObservableList<Expense> ret = FXCollections.observableArrayList();
-		String query = """
-				select Date, Amount, Type, ExpenseID
-				from Expense
-				group by Date, Amount, Type, ExpenseID
-				order by Date desc;
-				""";
+		String query = "select Date, Amount, Type, ExpenseID from Expense group by Date, Amount, Type, ExpenseID order by Date desc;";
 
 		try (
 				Connection conn =ds.getConnection();
@@ -92,12 +73,7 @@ public class DBManager {
 	public ObservableList<Expense> queryAllDetailedThisMonth() {
 		ObservableList<Expense> ret = FXCollections.observableArrayList();
 		LocalDate date = LocalDate.now();
-		String preparedQuery = """
-				select *
-				from Expense
-				where year(Date) = ? and month(Date) = ?
-				order by Date desc;
-				""";
+		String preparedQuery = "select * from Expense where year(Date) = ? and month(Date) = ? order by Date desc;";
 		
 		try (
 				Connection conn = ds.getConnection();
@@ -121,12 +97,7 @@ public class DBManager {
 	public ObservableList<MonthlyExpense> queryTotal() {
 
 		ObservableList<MonthlyExpense> ret = FXCollections.observableArrayList();
-		String query = """
-				select date_format(Date, '%Y-%m') as YearMonth, sum(Amount) as Sum
-				from Expense
-				group by date_format(Date, '%Y-%m')
-				order by date_format(Date, '%Y-%m') desc;
-				""";
+		String query = "select date_format(Date, '%Y-%m') as YearMonth, sum(Amount) as Sum from Expense group by date_format(Date, '%Y-%m') order by date_format(Date, '%Y-%m') desc;";
 
 		try (
 				Connection conn = ds.getConnection();
@@ -147,28 +118,8 @@ public class DBManager {
 
 	public ObservableList<MonthlyExpense> queryByType(Type t) {
 		
-//		Type t;
-//		if ((t = Type.getType(type)) == null)
-//			return null;
-		
-//		boolean typeCorrect = false;
-//		for (Type t : Type.values()) {
-//			if (t.value.equalsIgnoreCase(type)) {
-//				typeCorrect = true;
-//				break;
-//			}
-//		}
-//		if (!typeCorrect)
-//			return null;
-		
 		ObservableList<MonthlyExpense> ret = FXCollections.observableArrayList();
-		String preparedQuery = """
-				select date_format(Date, '%Y-%m') as YearMonth, sum(Amount) as Sum
-				from Expense
-				where Type=?
-				group by date_format(Date, '%Y-%m')
-				order by date_format(Date, '%Y-%m') desc;
-				""";
+		String preparedQuery = "select date_format(Date, '%Y-%m') as YearMonth, sum(Amount) as Sum from Expense where Type=? group by date_format(Date, '%Y-%m') order by date_format(Date, '%Y-%m') desc;";
 		
 		try (
 				Connection conn = ds.getConnection();
@@ -191,12 +142,7 @@ public class DBManager {
 	public double[] queryByMonthThisYear() {
 		double[] ret = new double[12];
 		
-		String preparedQuery = """
-				select month(Date) as Month, sum(Amount) as Sum
-				from Expense
-				where year(Date) = ?
-				group by month(Date);
-				""";
+		String preparedQuery = " select month(Date) as Month, sum(Amount) as Sum from Expense where year(Date) = ? group by month(Date);";
 		
 		try (
 				Connection conn = ds.getConnection();
